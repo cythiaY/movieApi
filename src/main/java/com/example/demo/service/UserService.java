@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Summer on 2017/12/9.
@@ -57,11 +58,16 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 //    }
 
     public boolean updateUserByName(String name, String phone) {
-        return userMapper.updateUserByName(name, phone);
+        User user = userMapper.selectByUserName(name);
+        System.out.println(user.getId());
+        System.out.println(user.getName());
+        user.setPhone(phone);
+        return updateById(user);
     }
 
-    public ResponseDO getUsers(String name, String phone) {
-
+    public List<User> getUsers(String name, String phone) {
+        return userMapper.getUsers(name,phone);
     }
+
 
 }
