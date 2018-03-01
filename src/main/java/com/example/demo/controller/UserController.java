@@ -53,6 +53,16 @@ public class UserController {
     }
 
     /**
+     * 登录
+     */
+    @RequestMapping("/login")
+    public ResponseDO login(@RequestParam(value = "userName", required = true) String userName,
+                               @RequestParam(value = "userPassword", required = true) String userPassword
+    ) {
+        return new ResponseDO(userService.login(userName, userPassword));
+    }
+
+    /**
      * 删除用户
      */
     @RequestMapping("/delete/user")

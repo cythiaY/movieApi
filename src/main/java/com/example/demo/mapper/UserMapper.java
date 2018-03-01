@@ -12,6 +12,7 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
 
     List<User> getUsers(@Param("name") String name, @Param("phone") String phone);
+    List<User> login(@Param("name") String name, @Param("password") String password);
 
     User selectByUserName(@Param("userName") String name);
 

@@ -69,5 +69,9 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return userMapper.getUsers(name,phone);
     }
 
+    public List<User> login(String name, String password) {
+        return userMapper.login(name,password);
+    }
+
 
 }

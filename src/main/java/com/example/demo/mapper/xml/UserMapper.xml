@@ -23,6 +23,11 @@
         </if>
     </select>
 
+    <select id="login" resultMap="BaseResultMap">
+        SELECT * FROM user WHERE user_name = #{name}
+        AND user_password = #{password}
+    </select>
+
     <select id="selectByUserName" resultMap="BaseResultMap">
         SELECT * FROM user WHERE user_name=#{userName}
     </select>
