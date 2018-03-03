@@ -3,9 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.ResponseDO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Summer on 2017/12/11.
@@ -21,6 +19,7 @@ public class UserController {
     /**
      * 添加用户
      */
+//    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @RequestMapping("/add")
     public ResponseDO adduser(@RequestParam(value = "userName", required = true) String userName,
                               @RequestParam(value = "userPassword", required = true) String userPsd,

@@ -34,10 +34,10 @@ public class UserService extends ServiceImpl<UserMapper, User> {
             user.setName(userName);
             user.setPassword(userPassword);
             user.setType(2);
-            if(userNickName != ""){
+            if (userNickName != "") {
                 user.setNickname(userNickName);
             }
-            if(userPhone != ""){
+            if (userPhone != "") {
                 user.setPhone(userPhone);
             }
             user.setCreateTime(new Date());
@@ -66,11 +66,15 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     }
 
     public List<User> getUsers(String name, String phone) {
-        return userMapper.getUsers(name,phone);
+        return userMapper.getUsers(name, phone);
     }
 
-    public List<User> login(String name, String password) {
-        return userMapper.login(name,password);
+    public boolean login(String name, String password) {
+        if (userMapper.login(name, password) != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
