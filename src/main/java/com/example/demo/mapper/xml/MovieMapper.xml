@@ -13,10 +13,14 @@
         <result column="movie_imageurl" property="imgUrl" ></result>
         <result column="movie_url" property="url" ></result>
         <result column="movie_score" property="score" ></result>
+        <result column="movie_content" property="content" ></result>
     </resultMap>
 
     <select id="getMovies" resultMap="BaseResultMap">
         SELECT * FROM movie WHERE 1=1
+        <if test="id != null and id !='' ">
+            AND movie_id = #{id}
+        </if>
     </select>
 
 </mapper>

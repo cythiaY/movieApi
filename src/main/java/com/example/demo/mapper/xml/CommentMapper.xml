@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CommentMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.domain.Comment">
+        <id column="comment_id" property="id"/>
+        <result column="comment_content" property="content"/>
+        <result column="comment_userid" property="userId"/>
+        <result column="comment_username" property="userName"/>
+        <result column="comment_movieid" property="movieId"/>
+        <result column="comment_moviename" property="movieName"/>
+        <result column="comment_score" property="score"/>
+        <result column="user_createTime" property="createTime"/>
+    </resultMap>
+
+    <select id="getComment" resultMap="BaseResultMap">
+        SELECT * FROM comment WHERE 1=1
+        <if test="name != null and name !='' ">
+            AND user_name LIKE concat(concat('%',#{name}),'%')
+        </if>
+        <if test="phone != null and phone !='' ">
+            AND user_phone LIKE concat(concat('%',#{phone}),'%')
+        </if>
+    </select>
+
+</mapper>

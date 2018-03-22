@@ -16,7 +16,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie>{
     @Autowired
     private MovieMapper movieMapper;
 
-    public List<Movie> getMovies(){
-        return movieMapper.getMovies();
+    public List<Movie> getMovies(String id){
+        return movieMapper.getMovies(id);
     }
 }

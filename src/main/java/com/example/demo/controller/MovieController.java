@@ -22,7 +22,7 @@ public class MovieController {
      *
      */
     @RequestMapping(value = "/getMovies",method = RequestMethod.GET)
-    public ResponseDO getMovies(){
-        return new ResponseDO(movieService.getMovies());
+    public ResponseDO getMovies(@RequestParam(value = "id",required = false) String id){
+        return new ResponseDO(movieService.getMovies(id));
     }
 }

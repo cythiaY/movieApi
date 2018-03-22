@@ -45,6 +45,9 @@ public class Movie {
     @TableField("movie_url")
     private String url;
 
+    @TableField("movie_content")
+    private String content;
+
     public Integer getId() {
         return id;
     }
@@ -131,5 +134,13 @@ public class Movie {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
