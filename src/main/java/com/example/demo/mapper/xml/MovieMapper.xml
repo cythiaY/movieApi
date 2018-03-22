@@ -10,9 +10,9 @@
         <result column="movie_type" property="type" ></result>
         <result column="movie_area" property="area" ></result>
         <result column="movie_date" property="date" ></result>
-        <result column="movie_imageurl" property="imageurl" ></result>
-        <result column="movie_score" property="score" ></result>
+        <result column="movie_imageurl" property="imgUrl" ></result>
         <result column="movie_url" property="url" ></result>
+        <result column="movie_score" property="score" ></result>
     </resultMap>
 
     <select id="getMovies" resultMap="BaseResultMap">

@@ -21,7 +21,7 @@ public class MovieController {
      * 查询电影信息
      *
      */
-    @RequestMapping("/getMovies")
+    @RequestMapping(value = "/getMovies",method = RequestMethod.GET)
     public ResponseDO getMovies(){
         return new ResponseDO(movieService.getMovies());
     }
