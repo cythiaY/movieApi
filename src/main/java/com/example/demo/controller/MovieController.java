@@ -3,9 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.service.MovieService;
 import com.example.demo.utils.ResponseDO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Summer on 2018/3/22.
