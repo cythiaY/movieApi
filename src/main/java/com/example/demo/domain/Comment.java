@@ -21,19 +21,19 @@ public class Comment {
     private String content;
 
     @TableField("comment_userid")
-    private String userId;
+    private Integer userId;
 
     @TableField("comment_username")
     private String userName;
 
     @TableField("comment_movieid")
-    private String movieId;
+    private Integer movieId;
 
     @TableField("comment_moviename")
     private String movieName;
 
     @TableField("comment_score")
-    private String score;
+    private double score;
 
     public Integer getId() {
         return id;
@@ -51,11 +51,11 @@ public class Comment {
         this.content = content;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -67,11 +67,11 @@ public class Comment {
         this.userName = userName;
     }
 
-    public String getMovieId() {
+    public Integer getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(String movieId) {
+    public void setMovieId(Integer movieId) {
         this.movieId = movieId;
     }
 
@@ -83,11 +83,11 @@ public class Comment {
         this.movieName = movieName;
     }
 
-    public String getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(double score) {
         this.score = score;
     }
 

@@ -34,7 +34,7 @@ public class UserController {
      */
     @RequestMapping("/update")
     public ResponseDO updateUser(@RequestParam(value = "userName", required = true) String userName,
-                           @RequestParam(value = "userPhone", required = true) String userPhone
+                                 @RequestParam(value = "userPhone", required = true) String userPhone
     ) {
 
         boolean result = userService.updateUserByName(userName, userPhone);
@@ -46,7 +46,7 @@ public class UserController {
      */
     @RequestMapping("/getUsers")
     public ResponseDO getUsers(@RequestParam(value = "userName", required = false) String userName,
-                           @RequestParam(value = "userPhone", required = false) String userPhone
+                               @RequestParam(value = "userPhone", required = false) String userPhone
     ) {
         return new ResponseDO(userService.getUsers(userName, userPhone));
     }
@@ -56,7 +56,7 @@ public class UserController {
      */
     @RequestMapping("/login")
     public ResponseDO login(@RequestParam(value = "userName", required = true) String userName,
-                               @RequestParam(value = "userPassword", required = true) String userPassword
+                            @RequestParam(value = "userPassword", required = true) String userPassword
     ) {
         return new ResponseDO(userService.login(userName, userPassword));
     }
