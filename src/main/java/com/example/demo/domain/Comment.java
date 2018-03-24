@@ -35,6 +35,9 @@ public class Comment {
     @TableField("comment_score")
     private double score;
 
+    @TableField("comment_time")
+    private Date time;
+
     public Integer getId() {
         return id;
     }
@@ -98,8 +101,5 @@ public class Comment {
     public void setTime(Date time) {
         this.time = time;
     }
-
-    @TableField("comment_time")
-    private Date time;
 
 }

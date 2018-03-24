@@ -18,8 +18,8 @@ public class CommentController {
     private CommentService commentService;
 
     @RequestMapping("/getComment")
-    public ResponseDO getComment() {
-        return new ResponseDO(commentService.getComment());
+    public ResponseDO getComment(@RequestParam(value="movieId") Integer movieId) {
+        return new ResponseDO(commentService.getComment(movieId));
     }
 
     @RequestMapping("/addComment")

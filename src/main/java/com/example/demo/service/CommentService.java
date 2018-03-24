@@ -23,8 +23,8 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
      *
      * @return
      */
-    public List<Comment> getComment(){
-        return commentMapper.getComment();
+    public List<Comment> getComment(Integer movieId){
+        return commentMapper.getComment(movieId);
     }
 
     /**
