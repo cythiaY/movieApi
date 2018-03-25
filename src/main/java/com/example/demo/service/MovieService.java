@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.demo.domain.Movie;
 import com.example.demo.mapper.MovieMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,17 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie>{
 
     public List<Movie> getMovies(String id){
         return movieMapper.getMovies(id);
+    }
+
+    public boolean updateMovie(Movie movie) {
+        return updateById(movie);
+    }
+
+    public boolean deleteMovie(String id) {
+        return  deleteById(id);
+    }
+
+    public boolean addMovie(Movie movie) {
+        return  insert(movie);
     }
 }

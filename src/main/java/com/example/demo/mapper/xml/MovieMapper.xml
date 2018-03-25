@@ -21,6 +21,7 @@
         <if test="id != null and id !='' ">
             AND movie_id = #{id}
         </if>
+        order by id desc
     </select>
 
 </mapper>

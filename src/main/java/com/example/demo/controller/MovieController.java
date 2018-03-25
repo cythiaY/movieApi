@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Movie;
 import com.example.demo.service.MovieService;
 import com.example.demo.utils.ResponseDO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,35 @@ public class MovieController {
     @RequestMapping(value = "/getMovies",method = RequestMethod.GET)
     public ResponseDO getMovies(@RequestParam(value = "id",required = false) String id){
         return new ResponseDO(movieService.getMovies(id));
+    }
+
+    /**
+     *
+     * 更新电影信息
+     *
+     */
+    @RequestMapping(value = "/update/Movies",method = RequestMethod.POST)
+    public ResponseDO updateMovies(@RequestBody Movie movie){
+        return new ResponseDO(movieService.updateMovie(movie));
+    }
+
+    /**
+     *
+     * 删除电影信息
+     *
+     */
+    @RequestMapping(value = "/delete/Movies",method = RequestMethod.POST)
+    public ResponseDO deleteMovies(@RequestParam(value = "id",required = false) String id){
+        return new ResponseDO(movieService.deleteMovie(id));
+    }
+
+    /**
+     *
+     * 删除电影信息
+     *
+     */
+    @RequestMapping(value = "/add/Movies",method = RequestMethod.POST)
+    public ResponseDO addMovies(@RequestBody Movie movie){
+        return new ResponseDO(movieService.addMovie(movie));
     }
 }
