@@ -33,16 +33,16 @@ public class UserController {
      * 修改用户
      */
     @RequestMapping("/update")
-    public ResponseDO updateUser(@RequestParam(value = "userName", required = true) String userName,
+    public ResponseDO updateUser(@RequestParam(value = "userId", required = true) Integer userId,
                                  @RequestParam(value = "userPhone", required = true) String userPhone
     ) {
 
-        boolean result = userService.updateUserByName(userName, userPhone);
+        boolean result = userService.updateUserById(userId, userPhone);
         return new ResponseDO(result);
     }
 
     /**
-     * 查询用户
+     * 查询用户列表
      */
     @RequestMapping("/getUsers")
     public ResponseDO getUsers(@RequestParam(value = "userName", required = false) String userName,
@@ -51,6 +51,13 @@ public class UserController {
         return new ResponseDO(userService.getUsers(userName, userPhone));
     }
 
+    /**
+     * 查询用户信息
+     */
+    @RequestMapping("/getUserInfo")
+    public ResponseDO getUserInfo(@RequestParam(value = "id", required = true) Integer id){
+        return new ResponseDO(userService.selectByUserId(id));
+    }
     /**
      * 登录
      */

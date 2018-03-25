@@ -59,12 +59,15 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 //        return false;
 //    }
 
-    public boolean updateUserByName(String name, String phone) {
-        User user = userMapper.selectByUserName(name);
+    public boolean updateUserById(Integer id, String phone) {
+        User user = userMapper.selectByUserId(id);
         System.out.println(user.getId());
         System.out.println(user.getName());
         user.setPhone(phone);
         return updateById(user);
+    }
+    public User selectByUserId(Integer userId){
+        return userMapper.selectByUserId(userId);
     }
 
     public List<User> getUsers(String name, String phone) {
