@@ -71,11 +71,12 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return userMapper.getUsers(name, phone);
     }
 
-    public boolean login(String name, String password) {
-        if (userMapper.login(name, password) != null) {
-            return true;
-        } else {
-            return false;
+    public Integer login(String name, String password) {
+        User user = userMapper.login(name, password);
+        if(user != null){
+            return user.getId();
+        }else {
+            return null;
         }
     }
 
