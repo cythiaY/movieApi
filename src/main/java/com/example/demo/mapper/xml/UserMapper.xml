@@ -28,12 +28,16 @@
         AND user_password = #{password}
     </select>
 
-    <select id="selectByUserName" resultMap="BaseResultMap">
-        SELECT * FROM user WHERE user_name=#{userName}
+    <select id="selectByUserId" resultMap="BaseResultMap">
+        SELECT * FROM user WHERE user_id=#{userId}
     </select>
 
-    <update id="updateUserByName">
-        update user set user_phone = #{phone} where user_name =#{name}
+    <select id="selectByUserName" resultMap="BaseResultMap">
+        SELECT * FROM user WHERE user_name=#{name}
+    </select>
+
+    <update id="updateUserById">
+        update user set user_phone = #{phone} where user_id =#{userId}
     </update>
 
 </mapper>
