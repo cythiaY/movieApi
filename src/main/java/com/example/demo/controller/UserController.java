@@ -54,7 +54,7 @@ public class UserController {
     /**
      * 登录
      */
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
     public ResponseDO login(@RequestParam(value = "userName", required = true) String userName,
                             @RequestParam(value = "userPassword", required = true) String userPassword
     ) {
