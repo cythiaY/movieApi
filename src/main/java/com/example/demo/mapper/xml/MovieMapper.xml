@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.MovieMapper">
     <resultMap id="BaseResultMap" type="com.example.demo.domain.Movie">
-        <id column="movie_id" property="id" />
-        <result column="movie_name" property="name" ></result>
-        <result column="movie_director" property="director" ></result>
-        <result column="movie_actor" property="actor" ></result>
-        <result column="movie_language" property="language" ></result>
-        <result column="movie_type" property="type" ></result>
-        <result column="movie_area" property="area" ></result>
-        <result column="movie_date" property="date" ></result>
-        <result column="movie_imageurl" property="imgUrl" ></result>
-        <result column="movie_url" property="url" ></result>
-        <result column="movie_score" property="score" ></result>
-        <result column="movie_content" property="content" ></result>
+        <id column="movie_id" property="id"/>
+        <result column="movie_name" property="name"></result>
+        <result column="movie_director" property="director"></result>
+        <result column="movie_actor" property="actor"></result>
+        <result column="movie_language" property="language"></result>
+        <result column="movie_type" property="type"></result>
+        <result column="movie_area" property="area"></result>
+        <result column="movie_date" property="date"></result>
+        <result column="movie_imageurl" property="imgUrl"></result>
+        <result column="movie_url" property="url"></result>
+        <result column="movie_score" property="score"></result>
+        <result column="movie_content" property="content"></result>
     </resultMap>
 
     <select id="getMovies" resultMap="BaseResultMap">
@@ -21,7 +21,12 @@
         <if test="id != null and id !='' ">
             AND movie_id = #{id}
         </if>
-        order by id desc
+        <if test="type != null and type == 1 ">
+            order by movie_date desc
+        </if>
+        <if test="type != null and type == 2 ">
+            order by movie_score desc
+        </if>
     </select>
 
 </mapper>

@@ -13,12 +13,12 @@ import java.util.List;
  * Created by Summer on 2018/3/22.
  */
 @Service
-public class MovieService extends ServiceImpl<MovieMapper, Movie>{
+public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
     private MovieMapper movieMapper;
 
-    public List<Movie> getMovies(String id){
-        return movieMapper.getMovies(id);
+    public List<Movie> getMovies(String id, Integer type) {
+        return movieMapper.getMovies(id, type);
     }
 
     public boolean updateMovie(Movie movie) {
@@ -26,10 +26,10 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie>{
     }
 
     public boolean deleteMovie(String id) {
-        return  deleteById(id);
+        return deleteById(id);
     }
 
     public boolean addMovie(Movie movie) {
-        return  insert(movie);
+        return insert(movie);
     }
 }
