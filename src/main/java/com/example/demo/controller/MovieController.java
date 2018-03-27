@@ -22,8 +22,11 @@ public class MovieController {
      */
     @RequestMapping(value = "/getMovies", method = RequestMethod.GET)
     public ResponseDO getMovies(@RequestParam(value = "id", required = false) String id,
-                                @RequestParam(value = "type", required = false) Integer type) {
-        return new ResponseDO(movieService.getMovies(id, type));
+                                @RequestParam(value = "orderType", required = false) Integer orderType,
+                                @RequestParam(value = "movieType", required = false) String movieType,
+                                @RequestParam(value = "year", required = false) Integer year,
+                                @RequestParam(value = "keyword", required = false) String keyword) {
+        return new ResponseDO(movieService.getMovies(id, orderType, movieType, year, keyword));
     }
 
     /**

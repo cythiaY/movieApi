@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * Created by Summer on 2018/3/22.
  */
-public interface MovieMapper extends BaseMapper<Movie>{
+public interface MovieMapper extends BaseMapper<Movie> {
 
-    List<Movie> getMovies(@Param("id") String id, @Param("type") Integer type);
+    List<Movie> getMovies(@Param("id") String id, @Param("orderType") Integer orderType, @Param("movieType") String movieType, @Param("year") Integer year, @Param("keyword") String keyword);
 
 }

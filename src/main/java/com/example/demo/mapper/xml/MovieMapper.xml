@@ -21,10 +21,19 @@
         <if test="id != null and id !='' ">
             AND movie_id = #{id}
         </if>
-        <if test="type != null and type == 1 ">
+        <if test="keyword != null and keyword !='' ">
+            AND movie_name LIKE concat(concat('%',#{keyword}),'%')
+        </if>
+        <if test="year != null and year != 1 ">
+            AND movie_date = #{year}
+        </if>
+        <if test="movieType !=null">
+            AND movie_type LIKE concat(concat('%',#{movieType}),'%')
+        </if>
+        <if test="orderType != null and orderType == 1 ">
             order by movie_date desc
         </if>
-        <if test="type != null and type == 2 ">
+        <if test="orderType != null and orderType == 2 ">
             order by movie_score desc
         </if>
     </select>

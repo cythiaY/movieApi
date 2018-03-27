@@ -17,8 +17,8 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
     private MovieMapper movieMapper;
 
-    public List<Movie> getMovies(String id, Integer type) {
-        return movieMapper.getMovies(id, type);
+    public List<Movie> getMovies(String id, Integer orderType, String movieType, Integer year, String keyword) {
+        return movieMapper.getMovies(id, orderType, movieType, year, keyword);
     }
 
     public boolean updateMovie(Movie movie) {
