@@ -14,15 +14,19 @@ import java.util.List;
  * Created by Summer on 2018/3/22.
  */
 @Service
-public class MovieService extends ServiceImpl<MovieMapper, Movie>{
+public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
     private MovieMapper movieMapper;
 
-    public List<Movie> getMovies(String id, Integer pageNo, Integer pageSize){
-        Page<Movie> page = new Page<>();
-        page.setCurrent(pageNo);
-        page.setSize(pageSize);
-        return movieMapper.getMovies(page,id);
+
+
+    public List<Movie> getMovies(String id, Integer orderType, String movieType, Integer year, String keyword,Integer pageNo, Integer pageSize) {
+            Page<Movie> page = new Page<>();
+            page.setCurrent(pageNo);
+            page.setSize(pageSize);
+
+        return movieMapper.getMovies(page,id, orderType, movieType, year, keyword);
+
     }
 
     public boolean updateMovie(Movie movie) {
@@ -30,10 +34,10 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie>{
     }
 
     public boolean deleteMovie(String id) {
-        return  deleteById(id);
+        return deleteById(id);
     }
 
     public boolean addMovie(Movie movie) {
-        return  insert(movie);
+        return insert(movie);
     }
 }

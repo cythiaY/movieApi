@@ -27,9 +27,9 @@ public class UserService extends ServiceImpl<UserMapper, User> {
      * @param userPassword ：登录密码
      */
     public boolean addUser(String userName, String userPassword, String userNickName, String userPhone) {
-        if (userMapper.selectByUserName(userName) != null) {
-            return false;
-        } else {
+//        if (userMapper.selectByUserName(userName) != null) {
+//            return false;
+//        } else {
             User user = new User();
             user.setName(userName);
             user.setPassword(userPassword);
@@ -42,20 +42,8 @@ public class UserService extends ServiceImpl<UserMapper, User> {
             }
             user.setCreateTime(new Date());
             return insert(user);
-        }
-    }
-
-//    public boolean updateUser(String userName, String userPassword, String nickName, String userPhone, Integer userHobby) {
-//        User user = userMapper.selectByUserName(userName);
-//        if (user != null) {
-//            user.setPassword(userPassword);
-//            user.setNickname(nickName);
-//            user.setPhone(userPhone);
-//            user.setHobby(userHobby);
-//            return updateById(user);
 //        }
-//        return false;
-//    }
+    }
 
     public boolean updateUserById(Integer id, String phone) {
         User user = userMapper.selectByUserId(id);
@@ -64,8 +52,10 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         user.setPhone(phone);
         return updateById(user);
     }
-    public User selectByUserId(Integer id){
-        return userMapper.selectByUserId(id);
+
+
+    public User selectByUserId(Integer userId) {
+        return userMapper.selectByUserId(userId);
     }
 
     public List<User> getUsers(String name, String phone, Integer pageNo, Integer pageSize) {
@@ -77,9 +67,9 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 
     public Integer login(String name, String password) {
         User user = userMapper.login(name, password);
-        if(user != null){
+        if (user != null) {
             return user.getId();
-        }else {
+        } else {
             return null;
         }
     }
