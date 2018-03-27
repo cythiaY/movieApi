@@ -46,9 +46,11 @@ public class UserController {
      */
     @RequestMapping("/getUsers")
     public ResponseDO getUsers(@RequestParam(value = "userName", required = false) String userName,
-                               @RequestParam(value = "userPhone", required = false) String userPhone
+                               @RequestParam(value = "userPhone", required = false) String userPhone,
+                               @RequestParam(value = "page_no",required = false,defaultValue = "1") Integer pageNo,
+                               @RequestParam(value = "page_size",required = false,defaultValue = "10") Integer pageSize
     ) {
-        return new ResponseDO(userService.getUsers(userName, userPhone));
+        return new ResponseDO(userService.getUsers(userName, userPhone,pageNo,pageSize));
     }
 
     /**

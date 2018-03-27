@@ -1,14 +1,12 @@
 package com.example.demo.service;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.demo.domain.User;
 import com.example.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -66,12 +64,15 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         user.setPhone(phone);
         return updateById(user);
     }
-    public User selectByUserId(Integer userId){
-        return userMapper.selectByUserId(userId);
+    public User selectByUserId(Integer id){
+        return userMapper.selectByUserId(id);
     }
 
-    public List<User> getUsers(String name, String phone) {
-        return userMapper.getUsers(name, phone);
+    public List<User> getUsers(String name, String phone, Integer pageNo, Integer pageSize) {
+        Page<User> page = new Page<>();
+        page.setCurrent(pageNo);
+        page.setSize(pageSize);
+        return userMapper.getUsers(page,name, phone);
     }
 
     public Integer login(String name, String password) {

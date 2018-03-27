@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Comment;
 import com.example.demo.service.CommentService;
 import com.example.demo.utils.ResponseDO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +20,10 @@ public class CommentController {
     private CommentService commentService;
 
     @RequestMapping("/getComment")
-    public ResponseDO getComment(@RequestParam(value="movieId") Integer movieId) {
-        return new ResponseDO(commentService.getComment(movieId));
+    public ResponseDO getComment(@RequestParam(value="movieId") Integer movieId,
+                                 @RequestParam(value = "page_no",required = false,defaultValue = "1") Integer pageNo,
+                                 @RequestParam(value = "page_size",required = false,defaultValue = "10") Integer pageSize) {
+        return new ResponseDO(commentService.getComment(movieId,pageNo,pageSize));
     }
 
     @RequestMapping("/addComment")
@@ -28,5 +32,15 @@ public class CommentController {
                                  @RequestParam(value = "content") String content,
                                  @RequestParam(value = "score") double score) {
         return new ResponseDO(commentService.addComment(userId, movieId, content, score));
+    }
+
+    @RequestMapping("/deleteComment")
+    public ResponseDO deleteComment(@RequestParam(value = "comment_id") Integer commentId) {
+        return new ResponseDO(commentService.deleteComment(commentId));
+    }
+
+    @RequestMapping("/updateComment")
+    public ResponseDO updateComment(@RequestBody Comment comment) {
+        return new ResponseDO(commentService.updateComment(comment));
     }
 }

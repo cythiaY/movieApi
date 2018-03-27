@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.demo.domain.Movie;
 import com.example.demo.mapper.MovieMapper;
@@ -17,8 +18,11 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie>{
     @Autowired
     private MovieMapper movieMapper;
 
-    public List<Movie> getMovies(String id){
-        return movieMapper.getMovies(id);
+    public List<Movie> getMovies(String id, Integer pageNo, Integer pageSize){
+        Page<Movie> page = new Page<>();
+        page.setCurrent(pageNo);
+        page.setSize(pageSize);
+        return movieMapper.getMovies(page,id);
     }
 
     public boolean updateMovie(Movie movie) {

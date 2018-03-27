@@ -23,8 +23,10 @@ public class MovieController {
      *
      */
     @RequestMapping(value = "/getMovies",method = RequestMethod.GET)
-    public ResponseDO getMovies(@RequestParam(value = "id",required = false) String id){
-        return new ResponseDO(movieService.getMovies(id));
+    public ResponseDO getMovies(@RequestParam(value = "id",required = false) String id,
+                                @RequestParam(value = "page_no",required = false,defaultValue = "1") Integer pageNo,
+                                @RequestParam(value = "page_size",required = false,defaultValue = "10") Integer pageSize){
+        return new ResponseDO(movieService.getMovies(id,pageNo,pageSize));
     }
 
     /**

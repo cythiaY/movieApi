@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.example.demo.domain.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    List<User> getUsers(@Param("name") String name, @Param("phone") String phone);
+    List<User> getUsers(Page<User> page, @Param("name") String name, @Param("phone") String phone);
     User login(@Param("name") String name, @Param("password") String password);
 
     User selectByUserId(@Param("userId") Integer userId);

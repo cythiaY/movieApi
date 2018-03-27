@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.demo.domain.Comment;
 import com.example.demo.mapper.CommentMapper;
@@ -23,8 +24,11 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
      *
      * @return
      */
-    public List<Comment> getComment(Integer movieId){
-        return commentMapper.getComment(movieId);
+    public List<Comment> getComment(Integer movieId, Integer pageNo, Integer pageSize){
+        Page <Comment> page = new Page<>();
+        page.setSize(pageNo);
+        page.setCurrent(pageSize);
+        return commentMapper.getComment(page,movieId);
     }
 
     /**
@@ -43,5 +47,13 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
         comment.setScore(score);
         comment.setTime(new Date());
         return insert(comment);
+    }
+
+    public boolean deleteComment(Integer commentId) {
+        return deleteById(commentId);
+    }
+
+    public boolean updateComment(Comment comment) {
+        return updateById(comment);
     }
 }

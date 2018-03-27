@@ -13,7 +13,10 @@
     </resultMap>
 
     <select id="getComment" resultMap="BaseResultMap">
-        SELECT * FROM comment WHERE comment_movieid = #{movieId}
+        SELECT c.comment_id  comment_id, c.comment_content comment_content, c.comment_userid comment_userid,
+        u.username comment_username,c.comment_movieid comment_movieid,c.comment_moviename comment_moviename,
+        c.comment_score comment_score,c.comment_time   comment_time
+        FROM comment c left join user u on c.user_id = u.user_id  WHERE c.comment_movieid = #{movieId}
     </select>
 
 </mapper>
