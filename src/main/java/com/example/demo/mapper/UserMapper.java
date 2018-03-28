@@ -20,5 +20,5 @@ public interface UserMapper extends BaseMapper<User> {
 
     User selectByUserName(@Param("userName") String name);
 
-    boolean updateUserById(@Param("userId") String userId, @Param("phone") String phone);
+    boolean updateUserById(@Param("userId") String userId, @Param("nickname") String nickname, @Param("phone") String phone);
 }

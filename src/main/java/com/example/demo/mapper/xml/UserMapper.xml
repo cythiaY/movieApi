@@ -37,7 +37,14 @@
     </select>
 
     <update id="updateUserById">
-        update user set user_phone = #{phone} where user_id =#{userId}
+        update user set
+        <if test="nickname != null and nickname !='' ">
+            user_nickname = #{nickname}
+        </if>
+        <if test="phone != null and phone !='' ">
+            user_phone = #{phone}
+        </if>
+        where user_id =#{userId}
     </update>
 
 </mapper>

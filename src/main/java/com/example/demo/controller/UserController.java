@@ -34,10 +34,24 @@ public class UserController {
      */
     @RequestMapping("/update")
     public ResponseDO updateUser(@RequestParam(value = "userId", required = true) Integer userId,
-                                 @RequestParam(value = "userPhone", required = true) String userPhone
+                                 @RequestParam(value = "userNickname", required = false) String userNickname,
+                                 @RequestParam(value = "userPhone", required = false) String userPhone
     ) {
 
-        boolean result = userService.updateUserById(userId, userPhone);
+        boolean result = userService.updateUserById(userId, userNickname, userPhone);
+        return new ResponseDO(result);
+    }
+
+    /**
+     * 修改密码
+     */
+    @RequestMapping("/resetPsd")
+    public ResponseDO updateUserPsd(
+            @RequestParam(value = "userId") Integer userId,
+            @RequestParam(value = "passwordBefore") String passwordBefore,
+            @RequestParam(value = "passwordAfter") String passwordAfter
+    ) {
+        boolean result = userService.updatePsdById(userId, passwordBefore, passwordAfter);
         return new ResponseDO(result);
     }
 

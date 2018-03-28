@@ -48,14 +48,23 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         }
     }
 
-    public boolean updateUserById(Integer id, String phone) {
+    public boolean updateUserById(Integer id, String nickname, String phone) {
         User user = userMapper.selectByUserId(id);
-        System.out.println(user.getId());
-        System.out.println(user.getName());
+        user.setNickname(nickname);
         user.setPhone(phone);
         return updateById(user);
     }
 
+    public boolean updatePsdById(Integer id, String psdBefore, String psdAfter) {
+        User user = userMapper.selectByUserId(id);
+        System.out.println((user.getPassword().toString() == psdBefore.toString()) + "::" + psdAfter);
+        if (user.getPassword() == psdBefore) {
+            user.setPassword(psdAfter);
+            return updateById(user);
+        } else {
+            return false;
+        }
+    }
 
     public User selectByUserId(Integer userId) {
         return userMapper.selectByUserId(userId);
