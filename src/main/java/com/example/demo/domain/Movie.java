@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -13,7 +12,7 @@ import java.util.Date;
  */
 @TableName("movie")
 public class Movie {
-    @TableId(value = "movie_id",type= IdType.AUTO)
+    @TableId(value = "movie_id", type = IdType.AUTO)
     private Integer id;
 
     @TableField("movie_name")
@@ -34,9 +33,8 @@ public class Movie {
     @TableField("movie_area")
     private String area;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @TableField("movie_date")
-    private Date date;
+    private String date;
 
 
     @TableField("movie_imageurl")
@@ -107,11 +105,11 @@ public class Movie {
         this.area = area;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

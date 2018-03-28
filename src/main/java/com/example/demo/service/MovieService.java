@@ -25,7 +25,6 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         Page<Movie> page = new Page<>();
         page.setCurrent(pageNo);
         page.setSize(pageSize);
-
         List<Movie> movies = movieMapper.getMovies(page, id, orderType, movieType, year, keyword);
         PageDTO<Movie> pageDTO = new PageDTO<>();
         pageDTO.setCurrent(pageNo);
@@ -33,7 +32,6 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         pageDTO.setTotal(page.getTotal());
         pageDTO.setRecords(movies);
         return pageDTO;
-
     }
 
     public boolean updateMovie(Movie movie) {

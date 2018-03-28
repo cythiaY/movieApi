@@ -27,8 +27,8 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
      */
     public PageDTO<Comment> getComment(Integer movieId, Integer pageNo, Integer pageSize){
         Page <Comment> page = new Page<>();
-        page.setSize(pageNo);
-        page.setCurrent(pageSize);
+        page.setCurrent(pageNo);
+        page.setSize(pageSize);
         List<Comment> comments = commentMapper.getComment(page, movieId);
         PageDTO<Comment> pageDTO = new PageDTO<>();
         pageDTO.setCurrent(pageNo);
