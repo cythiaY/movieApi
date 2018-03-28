@@ -21,14 +21,14 @@ public class MovieController {
      * 查询电影信息
      */
     @RequestMapping(value = "/getMovies", method = RequestMethod.GET)
-    public ResponseDO getMovies(@RequestParam(value = "id", required = false) String id,
+    public ResponseDO getMovies(@RequestParam(value = "id", required = false) Integer id,
                                 @RequestParam(value = "orderType", required = false) Integer orderType,
                                 @RequestParam(value = "movieType", required = false) String movieType,
                                 @RequestParam(value = "year", required = false) Integer year,
                                 @RequestParam(value = "keyword", required = false) String keyword,
-                @RequestParam(value = "page_no",required = false,defaultValue = "1") Integer pageNo,
-                @RequestParam(value = "page_size",required = false,defaultValue = "10") Integer pageSize) {
-        return new ResponseDO(movieService.getMovies(id, orderType, movieType, year, keyword,pageNo,pageSize));
+                                @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
+                                @RequestParam(value = "page_size", required = false, defaultValue = "10") Integer pageSize) {
+        return new ResponseDO(movieService.getMovies(id, orderType, movieType, year, keyword, pageNo, pageSize));
 
     }
 

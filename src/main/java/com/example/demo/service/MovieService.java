@@ -19,13 +19,12 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     private MovieMapper movieMapper;
 
 
+    public List<Movie> getMovies(Integer id, Integer orderType, String movieType, Integer year, String keyword, Integer pageNo, Integer pageSize) {
+        Page<Movie> page = new Page<>();
+        page.setCurrent(pageNo);
+        page.setSize(pageSize);
 
-    public List<Movie> getMovies(String id, Integer orderType, String movieType, Integer year, String keyword,Integer pageNo, Integer pageSize) {
-            Page<Movie> page = new Page<>();
-            page.setCurrent(pageNo);
-            page.setSize(pageSize);
-
-        return movieMapper.getMovies(page,id, orderType, movieType, year, keyword);
+        return movieMapper.getMovies(page, id, orderType, movieType, year, keyword);
 
     }
 
