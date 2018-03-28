@@ -19,6 +19,7 @@ public class MovieController {
 
     /**
      * 查询电影信息
+     * @orderType 1：最新 2：最热
      */
     @RequestMapping(value = "/getMovies", method = RequestMethod.GET)
     public ResponseDO getMovies(@RequestParam(value = "id", required = false) Integer id,

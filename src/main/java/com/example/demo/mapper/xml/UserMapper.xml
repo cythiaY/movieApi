@@ -33,7 +33,7 @@
     </select>
 
     <select id="selectByUserName" resultMap="BaseResultMap">
-        SELECT * FROM user WHERE user_name=#{name}
+        SELECT * FROM user WHERE user_name=#{userName}
     </select>
 
     <update id="updateUserById">

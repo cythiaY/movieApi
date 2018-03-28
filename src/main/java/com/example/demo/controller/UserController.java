@@ -65,8 +65,8 @@ public class UserController {
      * 登录
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ResponseDO login(@RequestParam(value = "userName", required = true) String userName,
-                            @RequestParam(value = "userPassword", required = true) String userPassword
+    public ResponseDO login(@RequestParam(value = "userName") String userName,
+                            @RequestParam(value = "userPassword") String userPassword
     ) {
         return new ResponseDO(userService.login(userName, userPassword));
     }
