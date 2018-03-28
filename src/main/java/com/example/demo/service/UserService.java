@@ -2,7 +2,9 @@ package com.example.demo.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.example.demo.domain.Movie;
 import com.example.demo.domain.User;
+import com.example.demo.dto.PageDTO;
 import com.example.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,11 +60,17 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return userMapper.selectByUserId(userId);
     }
 
-    public List<User> getUsers(String name, String phone, Integer pageNo, Integer pageSize) {
+    public PageDTO<User> getUsers(String name, String phone, Integer pageNo, Integer pageSize) {
         Page<User> page = new Page<>();
         page.setCurrent(pageNo);
         page.setSize(pageSize);
-        return userMapper.getUsers(page, name, phone);
+        List<User> users = userMapper.getUsers(page, name, phone);
+        PageDTO<User> pageDTO = new PageDTO<>();
+        pageDTO.setCurrent(pageNo);
+        pageDTO.setSize(pageSize);
+        pageDTO.setTotal(page.getTotal());
+        pageDTO.setRecords(users);
+        return pageDTO;
     }
 
     public Integer login(String name, String password) {

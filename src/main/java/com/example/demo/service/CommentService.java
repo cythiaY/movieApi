@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.demo.domain.Comment;
+import com.example.demo.dto.PageDTO;
 import com.example.demo.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,11 +25,17 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
      *
      * @return
      */
-    public List<Comment> getComment(Integer movieId, Integer pageNo, Integer pageSize){
+    public PageDTO<Comment> getComment(Integer movieId, Integer pageNo, Integer pageSize){
         Page <Comment> page = new Page<>();
         page.setSize(pageNo);
         page.setCurrent(pageSize);
-        return commentMapper.getComment(page,movieId);
+        List<Comment> comments = commentMapper.getComment(page, movieId);
+        PageDTO<Comment> pageDTO = new PageDTO<>();
+        pageDTO.setCurrent(pageNo);
+        pageDTO.setSize(pageSize);
+        pageDTO.setTotal(page.getTotal());
+        pageDTO.setRecords(comments);
+        return pageDTO;
     }
 
     /**
