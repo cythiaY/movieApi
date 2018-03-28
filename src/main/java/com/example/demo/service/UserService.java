@@ -27,9 +27,9 @@ public class UserService extends ServiceImpl<UserMapper, User> {
      * @param userPassword ：登录密码
      */
     public boolean addUser(String userName, String userPassword, String userNickName, String userPhone) {
-//        if (userMapper.selectByUserName(userName) != null) {
-//            return false;
-//        } else {
+        if (userMapper.selectByUserName(userName) != null) {
+            return false;
+        } else {
             User user = new User();
             user.setName(userName);
             user.setPassword(userPassword);
@@ -42,7 +42,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
             }
             user.setCreateTime(new Date());
             return insert(user);
-//        }
+        }
     }
 
     public boolean updateUserById(Integer id, String phone) {
@@ -62,7 +62,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         Page<User> page = new Page<>();
         page.setCurrent(pageNo);
         page.setSize(pageSize);
-        return userMapper.getUsers(page,name, phone);
+        return userMapper.getUsers(page, name, phone);
     }
 
     public Integer login(String name, String password) {

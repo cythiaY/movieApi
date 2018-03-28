@@ -47,23 +47,24 @@ public class UserController {
     @RequestMapping("/getUsers")
     public ResponseDO getUsers(@RequestParam(value = "userName", required = false) String userName,
                                @RequestParam(value = "userPhone", required = false) String userPhone,
-                               @RequestParam(value = "page_no",required = false,defaultValue = "1") Integer pageNo,
-                               @RequestParam(value = "page_size",required = false,defaultValue = "10") Integer pageSize
+                               @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
+                               @RequestParam(value = "page_size", required = false, defaultValue = "10") Integer pageSize
     ) {
-        return new ResponseDO(userService.getUsers(userName, userPhone,pageNo,pageSize));
+        return new ResponseDO(userService.getUsers(userName, userPhone, pageNo, pageSize));
     }
 
     /**
      * 查询用户信息
      */
     @RequestMapping("/getUserInfo")
-    public ResponseDO getUserInfo(@RequestParam(value = "id", required = true) Integer id){
+    public ResponseDO getUserInfo(@RequestParam(value = "userId", required = true) Integer id) {
         return new ResponseDO(userService.selectByUserId(id));
     }
+
     /**
      * 登录
      */
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ResponseDO login(@RequestParam(value = "userName", required = true) String userName,
                             @RequestParam(value = "userPassword", required = true) String userPassword
     ) {

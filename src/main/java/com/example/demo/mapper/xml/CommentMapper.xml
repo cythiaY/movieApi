@@ -14,9 +14,9 @@
 
     <select id="getComment" resultMap="BaseResultMap">
         SELECT c.comment_id  comment_id, c.comment_content comment_content, c.comment_userid comment_userid,
-        u.username comment_username,c.comment_movieid comment_movieid,c.comment_moviename comment_moviename,
+        u.user_name comment_username,c.comment_movieid comment_movieid,c.comment_moviename comment_moviename,
         c.comment_score comment_score,c.comment_time   comment_time
-        FROM comment c left join user u on c.user_id = u.user_id  WHERE c.comment_movieid = #{movieId}
+        FROM comment c left join user u on c.comment_userid = u.user_id  WHERE c.comment_movieid = #{movieId}
     </select>
 
 </mapper>

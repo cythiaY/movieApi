@@ -13,10 +13,12 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
 
     List<User> getUsers(Page<User> page, @Param("name") String name, @Param("phone") String phone);
+
     User login(@Param("name") String name, @Param("password") String password);
 
     User selectByUserId(@Param("userId") Integer userId);
+
     User selectByUserName(@Param("userName") String name);
 
-    boolean updateUserById(@Param("userId") String userId,@Param("phone")String phone);
+    boolean updateUserById(@Param("userId") String userId, @Param("phone") String phone);
 }
