@@ -19,6 +19,7 @@ public class MovieController {
 
     /**
      * 查询电影信息
+     *
      * @orderType 1：最新 2：最热
      */
     @RequestMapping(value = "/getMovies", method = RequestMethod.GET)
@@ -56,4 +57,5 @@ public class MovieController {
     public ResponseDO addMovies(@RequestBody Movie movie) {
         return new ResponseDO(movieService.addMovie(movie));
     }
+
 }

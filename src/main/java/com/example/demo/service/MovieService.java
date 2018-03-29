@@ -45,4 +45,5 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     public boolean addMovie(Movie movie) {
         return insert(movie);
     }
+
 }

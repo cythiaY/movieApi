@@ -12,7 +12,6 @@ import java.util.List;
  */
 public interface MovieMapper extends BaseMapper<Movie> {
 
-
     List<Movie> getMovies(Page<Movie> page, @Param("id") Integer id, @Param("orderType") Integer orderType, @Param("movieType") String movieType, @Param("year") Integer year, @Param("keyword") String keyword);
 
 }
