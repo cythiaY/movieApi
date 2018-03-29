@@ -26,6 +26,13 @@ public class CommentController {
         return new ResponseDO(commentService.getComment(movieId,pageNo,pageSize));
     }
 
+    @RequestMapping("/getComments")
+    public ResponseDO getComment(
+                                 @RequestParam(value = "page_no",required = false,defaultValue = "1") Integer pageNo,
+                                 @RequestParam(value = "page_size",required = false,defaultValue = "10") Integer pageSize) {
+        return new ResponseDO(commentService.getComments(pageNo,pageSize));
+    }
+
     @RequestMapping("/addComment")
     public ResponseDO addComment(@RequestParam(value = "userId") Integer userId,
                                  @RequestParam(value = "movieId") Integer movieId,

@@ -21,7 +21,7 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
     private CommentMapper commentMapper;
 
     /**
-     * 获取评论列表
+     * 根据电影id获取评论列表
      *
      * @return
      */
@@ -30,6 +30,24 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
         page.setCurrent(pageNo);
         page.setSize(pageSize);
         List<Comment> comments = commentMapper.getComment(page, movieId);
+        PageDTO<Comment> pageDTO = new PageDTO<>();
+        pageDTO.setCurrent(pageNo);
+        pageDTO.setSize(pageSize);
+        pageDTO.setTotal(page.getTotal());
+        pageDTO.setRecords(comments);
+        return pageDTO;
+    }
+
+    /**
+     * 获取全部评论列表
+     *
+     * @return
+     */
+    public PageDTO<Comment> getComments(Integer pageNo, Integer pageSize){
+        Page <Comment> page = new Page<>();
+        page.setCurrent(pageNo);
+        page.setSize(pageSize);
+        List<Comment> comments = commentMapper.getComments(page);
         PageDTO<Comment> pageDTO = new PageDTO<>();
         pageDTO.setCurrent(pageNo);
         pageDTO.setSize(pageSize);

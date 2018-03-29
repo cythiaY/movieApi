@@ -19,4 +19,8 @@
         FROM comment c left join user u on c.comment_userid = u.user_id  WHERE c.comment_movieid = #{movieId}
     </select>
 
+    <select id="getComments" resultMap="BaseResultMap">
+        SELECT * FROM comment where 1=1
+    </select>
+
 </mapper>
