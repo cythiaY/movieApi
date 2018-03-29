@@ -38,7 +38,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return updateById(movie);
     }
 
-    public boolean deleteMovie(String id) {
+    public boolean deleteMovie(Integer id) {
         return deleteById(id);
     }
 

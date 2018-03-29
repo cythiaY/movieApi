@@ -13,5 +13,5 @@ import java.util.List;
 public interface CommentMapper extends BaseMapper<Comment> {
     List<Comment> getComment(Page<Comment> page, @Param("movieId") Integer movieId);
 
-    List<Comment> getComments(Page<Comment> page);
+    List<Comment> getComments(@Param("keyword") String keyword, Page<Comment> page);
 }

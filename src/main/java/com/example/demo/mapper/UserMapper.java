@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    List<User> getUsers(Page<User> page, @Param("name") String name, @Param("phone") String phone);
+    List<User> getUsers(Page<User> page, @Param("name") String name, @Param("phone") String phone, @Param("keyword") String keyword);
 
     User login(@Param("name") String name, @Param("password") String password);
 

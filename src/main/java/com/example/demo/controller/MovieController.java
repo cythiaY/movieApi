@@ -45,13 +45,13 @@ public class MovieController {
     /**
      * 删除电影信息
      */
-    @RequestMapping(value = "/delete/Movies", method = RequestMethod.POST)
-    public ResponseDO deleteMovies(@RequestParam(value = "id", required = false) String id) {
+    @RequestMapping(value = "/delete/Movies")
+    public ResponseDO deleteMovies(@RequestParam(value = "id") Integer id) {
         return new ResponseDO(movieService.deleteMovie(id));
     }
 
     /**
-     * 删除电影信息
+     * 新增电影
      */
     @RequestMapping(value = "/add/Movies", method = RequestMethod.POST)
     public ResponseDO addMovies(@RequestBody Movie movie) {

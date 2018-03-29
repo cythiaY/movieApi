@@ -20,17 +20,17 @@ public class CommentController {
     private CommentService commentService;
 
     @RequestMapping("/getComment")
-    public ResponseDO getComment(@RequestParam(value="movieId") Integer movieId,
-                                 @RequestParam(value = "page_no",required = false,defaultValue = "1") Integer pageNo,
-                                 @RequestParam(value = "page_size",required = false,defaultValue = "10") Integer pageSize) {
-        return new ResponseDO(commentService.getComment(movieId,pageNo,pageSize));
+    public ResponseDO getComment(@RequestParam(value = "movieId") Integer movieId,
+                                 @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
+                                 @RequestParam(value = "page_size", required = false, defaultValue = "10") Integer pageSize) {
+        return new ResponseDO(commentService.getComment(movieId, pageNo, pageSize));
     }
 
     @RequestMapping("/getComments")
-    public ResponseDO getComment(
-                                 @RequestParam(value = "page_no",required = false,defaultValue = "1") Integer pageNo,
-                                 @RequestParam(value = "page_size",required = false,defaultValue = "10") Integer pageSize) {
-        return new ResponseDO(commentService.getComments(pageNo,pageSize));
+    public ResponseDO getComment(@RequestParam(value = "keyword", required = false) String keyword,
+                                 @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
+                                 @RequestParam(value = "page_size", required = false, defaultValue = "10") Integer pageSize) {
+        return new ResponseDO(commentService.getComments(keyword, pageNo, pageSize));
     }
 
     @RequestMapping("/addComment")

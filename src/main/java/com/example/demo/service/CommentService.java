@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Summer on 2018/3/22.
  */
 @Service
-public class CommentService extends ServiceImpl<CommentMapper, Comment>{
+public class CommentService extends ServiceImpl<CommentMapper, Comment> {
 
     @Autowired
     private CommentMapper commentMapper;
@@ -25,8 +25,8 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
      *
      * @return
      */
-    public PageDTO<Comment> getComment(Integer movieId, Integer pageNo, Integer pageSize){
-        Page <Comment> page = new Page<>();
+    public PageDTO<Comment> getComment(Integer movieId, Integer pageNo, Integer pageSize) {
+        Page<Comment> page = new Page<>();
         page.setCurrent(pageNo);
         page.setSize(pageSize);
         List<Comment> comments = commentMapper.getComment(page, movieId);
@@ -43,11 +43,11 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
      *
      * @return
      */
-    public PageDTO<Comment> getComments(Integer pageNo, Integer pageSize){
-        Page <Comment> page = new Page<>();
+    public PageDTO<Comment> getComments(String keyword, Integer pageNo, Integer pageSize) {
+        Page<Comment> page = new Page<>();
         page.setCurrent(pageNo);
         page.setSize(pageSize);
-        List<Comment> comments = commentMapper.getComments(page);
+        List<Comment> comments = commentMapper.getComments(keyword, page);
         PageDTO<Comment> pageDTO = new PageDTO<>();
         pageDTO.setCurrent(pageNo);
         pageDTO.setSize(pageSize);
@@ -57,14 +57,13 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment>{
     }
 
     /**
-     *
-     * @param userId 评论者id
+     * @param userId  评论者id
      * @param movieId 评论电影id
      * @param content 评论内容
-     * @param score 评分
+     * @param score   评分
      * @return
      */
-    public boolean addComment(Integer userId, Integer movieId,String content,double score){
+    public boolean addComment(Integer userId, Integer movieId, String content, double score) {
         Comment comment = new Comment();
         comment.setMovieId(movieId);
         comment.setUserId(userId);

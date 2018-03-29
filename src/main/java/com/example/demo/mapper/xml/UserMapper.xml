@@ -21,6 +21,9 @@
         <if test="phone != null and phone !='' ">
             AND user_phone LIKE concat(concat('%',#{phone}),'%')
         </if>
+        <if test="keyword != null and keyword !='' ">
+            AND user_name LIKE concat(concat('%',#{keyword}),'%')
+        </if>
     </select>
 
     <select id="login" resultMap="BaseResultMap">

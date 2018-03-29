@@ -19,7 +19,6 @@ public class UserController {
     /**
      * 添加用户
      */
-//    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @RequestMapping("/add")
     public ResponseDO adduser(@RequestParam(value = "userName", required = true) String userName,
                               @RequestParam(value = "userPassword", required = true) String userPsd,
@@ -61,10 +60,11 @@ public class UserController {
     @RequestMapping("/getUsers")
     public ResponseDO getUsers(@RequestParam(value = "userName", required = false) String userName,
                                @RequestParam(value = "userPhone", required = false) String userPhone,
+                               @RequestParam(value = "keyword", required = false) String keyword,
                                @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
                                @RequestParam(value = "page_size", required = false, defaultValue = "10") Integer pageSize
     ) {
-        return new ResponseDO(userService.getUsers(userName, userPhone, pageNo, pageSize));
+        return new ResponseDO(userService.getUsers(userName, userPhone,keyword, pageNo, pageSize));
     }
 
     /**
@@ -89,7 +89,7 @@ public class UserController {
      * 删除用户
      */
     @RequestMapping("/delete/user")
-    public ResponseDO deleteUser(@RequestParam(value = "id", required = true) Integer id) {
+    public ResponseDO deleteUser(@RequestParam(value = "id") Integer id) {
         return new ResponseDO(userService.deleteById(id));
     }
 

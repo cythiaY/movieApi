@@ -69,11 +69,11 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         return userMapper.selectByUserId(userId);
     }
 
-    public PageDTO<User> getUsers(String name, String phone, Integer pageNo, Integer pageSize) {
+    public PageDTO<User> getUsers(String name, String phone, String keyword, Integer pageNo, Integer pageSize) {
         Page<User> page = new Page<>();
         page.setCurrent(pageNo);
         page.setSize(pageSize);
-        List<User> users = userMapper.getUsers(page, name, phone);
+        List<User> users = userMapper.getUsers(page, name, phone, keyword);
         PageDTO<User> pageDTO = new PageDTO<>();
         pageDTO.setCurrent(pageNo);
         pageDTO.setSize(pageSize);

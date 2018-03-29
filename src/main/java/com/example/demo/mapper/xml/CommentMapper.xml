@@ -21,6 +21,9 @@
 
     <select id="getComments" resultMap="BaseResultMap">
         SELECT * FROM comment where 1=1
+        <if test="keyword != null and keyword !='' ">
+            AND comment_content LIKE concat(concat('%',#{keyword}),'%')
+        </if>
     </select>
 
 </mapper>
