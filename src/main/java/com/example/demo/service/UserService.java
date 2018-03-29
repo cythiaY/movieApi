@@ -57,7 +57,6 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 
     public boolean updatePsdById(Integer id, String psdBefore, String psdAfter) {
         User user = userMapper.selectByUserId(id);
-        System.out.println((user.getPassword().toString() == psdBefore.toString()) + "::" + psdAfter);
         if (user.getPassword() == psdBefore) {
             user.setPassword(psdAfter);
             return updateById(user);
@@ -92,5 +91,25 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         }
     }
 
+    public boolean starMovie(Integer userId, Integer movieId, Boolean tag) {
+        User user = userMapper.selectByUserId(userId);
 
+        // 添加收藏
+        if (tag) {
+            if (user.getStar() != null) {
+                if (!(user.getStar().toString().contains(movieId.toString() + ':'))) {
+                    user.setStar(user.getStar().toString() + movieId.toString() + ':');
+                }
+            } else {
+                user.setStar(movieId.toString() + ':');
+            }
+        } else {   //取消收藏
+            String before = user.getStar();
+            Integer index = user.getStar().indexOf(movieId.toString() + ':');
+            String after = before.substring(0, index) + before.substring(index + movieId.toString().length() + 1, before.length());
+            System.out.print(after);
+            user.setStar(after);
+        }
+        return updateById(user);
+    }
 }

@@ -33,8 +33,8 @@ public class User {
     @TableField("user_phone")
     private String phone;
 
-    @TableField("user_hobby")
-    private Integer hobby;
+    @TableField("user_star")
+    private String star;
 
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @TableField("user_createTime")
@@ -84,12 +84,12 @@ public class User {
         this.phone = phone;
     }
 
-    public Integer getHobby() {
-        return hobby;
+    public String getStar() {
+        return star;
     }
 
-    public void setHobby(Integer hobby) {
-        this.hobby = hobby;
+    public void setStar(String star ) {
+        this.star = star;
     }
 
     public Date getCreatetime() {

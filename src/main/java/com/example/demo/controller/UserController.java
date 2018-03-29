@@ -92,4 +92,15 @@ public class UserController {
     public ResponseDO deleteUser(@RequestParam(value = "id", required = true) Integer id) {
         return new ResponseDO(userService.deleteById(id));
     }
+
+    /**
+     * 收藏电影
+     * tag : true 收藏  false 取消收藏
+     */
+    @RequestMapping(value = "/starMovie")
+    public ResponseDO starMovie(@RequestParam(value = "userId") Integer userId,
+                                @RequestParam(value = "movieId") Integer movieId,
+                                @RequestParam(value = "tag") Boolean tag) {
+        return new ResponseDO(userService.starMovie(userId, movieId, tag));
+    }
 }
