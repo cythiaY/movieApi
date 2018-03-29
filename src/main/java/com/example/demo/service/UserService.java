@@ -84,7 +84,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     }
 
     public Integer login(String name, String password) {
-        User user = userMapper.login(name, PasswordUtils.getStudentPassword(password));
+        User user = userMapper.login(name,password);
         if (user != null) {
             return user.getId();
         } else {

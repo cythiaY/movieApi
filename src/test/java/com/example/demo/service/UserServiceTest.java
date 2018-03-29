@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.BaseTest;
 import com.example.demo.MovieApplication;
+import com.example.demo.domain.User;
+import com.example.demo.dto.PageDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +14,8 @@ import javax.xml.ws.soap.Addressing;
 
 import static org.junit.Assert.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = {MovieApplication.class})
-public class UserServiceTest{
+
+public class UserServiceTest extends BaseTest{
 
     @Autowired
     private UserService userService;
@@ -28,6 +30,8 @@ public class UserServiceTest{
 
     @Test
     public void getUsers() throws Exception {
+        PageDTO<User> users = userService.getUsers(null, null, 1, 10);
+        System.out.println(users.getRecords().size());
     }
 
 //    @Test
