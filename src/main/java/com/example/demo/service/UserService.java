@@ -57,7 +57,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 
     public boolean updatePsdById(Integer id, String psdBefore, String psdAfter) {
         User user = userMapper.selectByUserId(id);
-        if (user.getPassword() == psdBefore) {
+        if (user.getPassword().equals(psdBefore)) {
             user.setPassword(psdAfter);
             return updateById(user);
         } else {
@@ -93,7 +93,6 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 
     public boolean starMovie(Integer userId, Integer movieId, Boolean tag) {
         User user = userMapper.selectByUserId(userId);
-
         // 添加收藏
         if (tag) {
             if (user.getStar() != null) {
