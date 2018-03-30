@@ -23,9 +23,10 @@ public class UserController {
     public ResponseDO adduser(@RequestParam(value = "userName", required = true) String userName,
                               @RequestParam(value = "userPassword", required = true) String userPsd,
                               @RequestParam(value = "userNickName", required = false) String userNickName,
+                              @RequestParam(value = "userType", required = true) Integer userType,
                               @RequestParam(value = "userPhone", required = false) String userPhone
     ) {
-        return new ResponseDO(userService.addUser(userName, userPsd, userNickName, userPhone));
+        return new ResponseDO(userService.addUser(userName, userPsd, userNickName, userType, userPhone));
     }
 
     /**
@@ -34,10 +35,11 @@ public class UserController {
     @RequestMapping("/update")
     public ResponseDO updateUser(@RequestParam(value = "userId", required = true) Integer userId,
                                  @RequestParam(value = "userNickname", required = false) String userNickname,
+                                 @RequestParam(value = "type", required = false) Integer type,
                                  @RequestParam(value = "userPhone", required = false) String userPhone
     ) {
 
-        boolean result = userService.updateUserById(userId, userNickname, userPhone);
+        boolean result = userService.updateUserById(userId, userNickname, userPhone, type);
         return new ResponseDO(result);
     }
 
@@ -64,7 +66,7 @@ public class UserController {
                                @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
                                @RequestParam(value = "page_size", required = false, defaultValue = "10") Integer pageSize
     ) {
-        return new ResponseDO(userService.getUsers(userName, userPhone,keyword, pageNo, pageSize));
+        return new ResponseDO(userService.getUsers(userName, userPhone, keyword, pageNo, pageSize));
     }
 
     /**

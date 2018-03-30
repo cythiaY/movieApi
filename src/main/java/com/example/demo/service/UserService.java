@@ -29,14 +29,14 @@ public class UserService extends ServiceImpl<UserMapper, User> {
      * @param userName：登录名
      * @param userPassword ：登录密码
      */
-    public boolean addUser(String userName, String userPassword, String userNickName, String userPhone) {
+    public boolean addUser(String userName, String userPassword, String userNickName, Integer userType, String userPhone) {
         if (userMapper.selectByUserName(userName) != null) {
             return false;
         } else {
             User user = new User();
             user.setName(userName);
             user.setPassword(userPassword);
-            user.setType(2);
+            user.setType(userType);
             if (userNickName != "") {
                 user.setNickname(userNickName);
             }
@@ -48,10 +48,11 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         }
     }
 
-    public boolean updateUserById(Integer id, String nickname, String phone) {
+    public boolean updateUserById(Integer id, String nickname, String phone, Integer type) {
         User user = userMapper.selectByUserId(id);
         user.setNickname(nickname);
         user.setPhone(phone);
+        user.setType(type);
         return updateById(user);
     }
 
