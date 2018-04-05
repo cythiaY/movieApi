@@ -89,6 +89,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.mahout</groupId>
+			<artifactId>mahout-taste-webapp</artifactId>
+			<version>0.5</version>
+			<type>pom</type>
+		</dependency>
 	</dependencies>
 
 	<build>
