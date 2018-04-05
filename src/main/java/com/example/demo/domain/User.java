@@ -36,7 +36,10 @@ public class User {
     @TableField("user_star")
     private String star;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @TableField("user_score")
+    private String score;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField("user_createTime")
     private Date createTime;
 
@@ -88,7 +91,7 @@ public class User {
         return star;
     }
 
-    public void setStar(String star ) {
+    public void setStar(String star) {
         this.star = star;
     }
 
@@ -98,6 +101,14 @@ public class User {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 
 }

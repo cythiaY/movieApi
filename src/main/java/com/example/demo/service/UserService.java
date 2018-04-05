@@ -112,4 +112,16 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         }
         return updateById(user);
     }
+
+    public boolean scoreMovie(Integer userId, Integer movieId) {
+        User user = userMapper.selectByUserId(userId);
+        if (user.getScore() != null) {
+            if (!(user.getScore().toString().contains(movieId.toString() + ':'))) {
+                user.setScore(user.getScore().toString() + movieId.toString() + ':');
+            }
+        } else {
+            user.setScore(movieId.toString() + ':');
+        }
+        return updateById(user);
+    }
 }

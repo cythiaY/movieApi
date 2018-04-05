@@ -9,6 +9,7 @@
         <result column="user_nickname" property="nickname"/>
         <result column="user_phone" property="phone"/>
         <result column="user_star" property="star"/>
+        <result column="user_score" property="score"/>
         <result column="user_createTime" property="createTime"/>
     </resultMap>
 

@@ -105,4 +105,13 @@ public class UserController {
                                 @RequestParam(value = "tag") Boolean tag) {
         return new ResponseDO(userService.starMovie(userId, movieId, tag));
     }
+
+    /**
+     * 用户点评电影
+     */
+    @RequestMapping(value = "/scoreMovie")
+    public ResponseDO starMovie(@RequestParam(value = "userId") Integer userId,
+                                @RequestParam(value = "movieId") Integer movieId) {
+        return new ResponseDO(userService.scoreMovie(userId, movieId));
+    }
 }
