@@ -73,21 +73,21 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
 
     public List<Movie> getRecommendMovies(Integer userId) {
         List<Comment> comments = selectList(null);
-        List<Map<String, String>> exportData = new ArrayList<Map<String, String>>();
+        List<Map<Integer, String>> exportData = new ArrayList<Map<Integer, String>>();
         for (Comment dto : comments) {
-            Map<String, String> row = new LinkedHashMap<>();
+            Map<Integer, String> row = new LinkedHashMap<>();
             if(dto.getId() != comments.get(0).getId()){
-                row.put("1", String.valueOf(dto.getUserId()));
-                row.put("2", String.valueOf(dto.getMovieId()));
-                row.put("3", String.valueOf(dto.getScore()));
+                row.put(1, String.valueOf(dto.getUserId()));
+                row.put(2, String.valueOf(dto.getMovieId()));
+                row.put(3, String.valueOf(dto.getScore()));
                 exportData.add(row);
             }
         }
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
-        map.put("1", String.valueOf(comments.get(0).getUserId()));
-        map.put("2", String.valueOf(comments.get(0).getMovieId()));
-        map.put("3", String.valueOf(comments.get(0).getScore()));
-        CSVUtils.createCSVFile(exportData, map, "D://csv", "data").getPath();
+        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+        map.put(1, String.valueOf(comments.get(0).getUserId()));
+        map.put(2, String.valueOf(comments.get(0).getMovieId()));
+        map.put(3, String.valueOf(comments.get(0).getScore()));
+        CSVUtils.createCSVFile(exportData, map, "/Users/mac/Documents/GraduationProject/movie", "data").getPath();
 
         List<Movie> movies = new ArrayList<>();
         try {
