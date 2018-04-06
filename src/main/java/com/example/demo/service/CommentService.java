@@ -13,7 +13,7 @@ import org.apache.mahout.cf.taste.common.TasteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -73,21 +73,22 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
 
     public List<Movie> getRecommendMovies(Integer userId) {
         List<Comment> comments = selectList(null);
-        List<Map<Integer, String>> exportData = new ArrayList<Map<Integer, String>>();
-        for (Comment dto : comments) {
-            Map<Integer, String> row = new LinkedHashMap<>();
-            if(dto.getId() != comments.get(0).getId()){
-                row.put(1, String.valueOf(dto.getUserId()));
-                row.put(2, String.valueOf(dto.getMovieId()));
-                row.put(3, String.valueOf(dto.getScore()));
-                exportData.add(row);
+        BufferedWriter csvFileOutputStream  = null;
+        try {
+            csvFileOutputStream =  new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("D://csv/data.csv")), "UTF-8"), 1024);
+            for (int i = 0; i < comments.size() ; i++) {
+                csvFileOutputStream.write(comments.get(i).getUserId()+","+comments.get(i).getMovieId()+","+comments.get(i).getScore());
+                if(i != comments.size()-1){
+                    csvFileOutputStream.newLine();
+                }
+            }
+            csvFileOutputStream.flush();
+        } catch (IOException e) {
+            try {
+                csvFileOutputStream.close();
+            } catch (IOException e1) {
             }
         }
-        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
-        map.put(1, String.valueOf(comments.get(0).getUserId()));
-        map.put(2, String.valueOf(comments.get(0).getMovieId()));
-        map.put(3, String.valueOf(comments.get(0).getScore()));
-        CSVUtils.createCSVFile(exportData, map, "/Users/mac/Documents/GraduationProject/movie", "data").getPath();
 
         List<Movie> movies = new ArrayList<>();
         try {
