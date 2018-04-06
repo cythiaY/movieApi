@@ -25,14 +25,14 @@ public class CSVUtils {
             // GB2312使正确读取分隔符","
             csvFileOutputStream = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csvFile), "UTF-8"), 1024);
             // 写入文件头部
-//            for (Iterator<Entry<String, String>> propertyIterator = rowMapper.entrySet().iterator(); propertyIterator.hasNext(); ) {
-//                Entry<String, String> propertyEntry = (Entry<String, String>) propertyIterator.next();
-//                csvFileOutputStream.write("\"" + propertyEntry.getValue().toString() + "\"");
-//                if (propertyIterator.hasNext()) {
-//                    csvFileOutputStream.write(",");
-//                }
-//            }
-//            csvFileOutputStream.newLine();
+            for (Iterator<Entry<String, String>> propertyIterator = rowMapper.entrySet().iterator(); propertyIterator.hasNext(); ) {
+                Entry<String, String> propertyEntry = (Entry<String, String>) propertyIterator.next();
+                csvFileOutputStream.write("\"" + propertyEntry.getValue().toString() + "\"");
+                if (propertyIterator.hasNext()) {
+                    csvFileOutputStream.write(",");
+                }
+            }
+            csvFileOutputStream.newLine();
             // 写入文件内容
             for (Iterator<Map<String, String>> iterator = exportData.iterator(); iterator.hasNext(); ) {
                 Map<String, String> row = (Map<String, String>) iterator.next();
