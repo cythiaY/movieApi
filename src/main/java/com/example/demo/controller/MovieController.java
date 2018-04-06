@@ -59,9 +59,9 @@ public class MovieController {
     }
 
     /**
-     * 查询电影信息
      *
-     * @orderType 1：最新 2：最热
+     * 获取推荐电影
+     * 
      */
     @RequestMapping(value = "/recommend/Movies", method = RequestMethod.GET)
     public ResponseDO getMovies(@RequestParam(value = "user_id", required = false) Integer userId) {
