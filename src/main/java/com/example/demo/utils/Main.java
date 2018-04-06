@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.example.demo.utils;
 
         import org.apache.mahout.cf.taste.common.TasteException;
         import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
@@ -14,6 +14,7 @@ package com.example.demo.domain;
 
         import java.io.File;
         import java.io.IOException;
+        import java.util.ArrayList;
         import java.util.List;
 
 public class Main
@@ -21,7 +22,7 @@ public class Main
     final static int NEIGHBORHOOD_NUM = 2;   //用户邻居数量
     final static int RECOMMENDER_NUM = 3;    //推荐结果个数
 
-    public static void main(String[] args) throws IOException,TasteException
+    public static List<Integer> main(Integer uid) throws IOException,TasteException
     {
         // write your code here
 
@@ -41,18 +42,20 @@ public class Main
         //得到所有用户的id集合
         LongPrimitiveIterator iter = model.getUserIDs();
 
-        while(iter.hasNext())
-        {
-            long uid = iter.nextLong();
+//        while(iter.hasNext())
+//        {
+//            long uid = iter.nextLong();
             List<RecommendedItem> list = r.recommend(uid,RECOMMENDER_NUM);  //获取推荐结果
             System.out.printf("uid:%s",uid);
             //遍历推荐结果
+            List<Integer> ids = new ArrayList<>();
             for(RecommendedItem ritem : list)
             {
                 System.out.printf("(%s,%f)",ritem.getItemID(),ritem.getValue());
+                ids.add(Integer.parseInt(String.valueOf(ritem.getItemID())));
             }
             System.out.println();
-        }
-
+//        }
+        return ids;
     }
 }

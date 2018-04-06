@@ -20,6 +20,9 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
     private MovieMapper movieMapper;
 
+    @Autowired
+    private CommentService commentService;
+
 
     public PageDTO<Movie> getMovies(Integer id, Integer orderType, String movieType, Integer year, String keyword, Integer pageNo, Integer pageSize) {
         Page<Movie> page = new Page<>();
@@ -46,4 +49,8 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         return insert(movie);
     }
 
+    public List<Movie> recommendMovies(Integer userId ) {
+       List<Movie> movies =  commentService.getRecommendMovies(userId);
+       return movies;
+    }
 }

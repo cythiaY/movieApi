@@ -58,4 +58,14 @@ public class MovieController {
         return new ResponseDO(movieService.addMovie(movie));
     }
 
+    /**
+     * 查询电影信息
+     *
+     * @orderType 1：最新 2：最热
+     */
+    @RequestMapping(value = "/recommend/Movies", method = RequestMethod.GET)
+    public ResponseDO getMovies(@RequestParam(value = "user_id", required = false) Integer userId) {
+        return new ResponseDO(movieService.recommendMovies(userId));
+
+    }
 }

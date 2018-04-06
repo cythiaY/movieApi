@@ -1,15 +1,20 @@
 package com.example.demo.service;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.demo.domain.Comment;
+import com.example.demo.domain.Movie;
 import com.example.demo.dto.PageDTO;
 import com.example.demo.mapper.CommentMapper;
+import com.example.demo.utils.CSVUtils;
+import com.example.demo.utils.Main;
+import org.apache.mahout.cf.taste.common.TasteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created by Summer on 2018/3/22.
@@ -19,6 +24,9 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
 
     @Autowired
     private CommentMapper commentMapper;
+
+    @Autowired
+    private MovieService movieService;
 
     /**
      * 根据电影id获取评论列表
@@ -61,5 +69,35 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
 
     public boolean updateComment(Comment comment) {
         return updateById(comment);
+    }
+
+    public List<Movie> getRecommendMovies(Integer userId) {
+        List<Comment> comments = selectList(null);
+        List<Map<String, String>> exportData = new ArrayList<Map<String, String>>();
+        for (Comment dto : comments) {
+            Map<String, String> row = new LinkedHashMap<>();
+            if(dto.getId() != comments.get(0).getId()){
+                row.put("1", String.valueOf(dto.getUserId()));
+                row.put("2", String.valueOf(dto.getMovieId()));
+                row.put("3", String.valueOf(dto.getScore()));
+                exportData.add(row);
+            }
+        }
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        map.put("1", String.valueOf(comments.get(0).getUserId()));
+        map.put("2", String.valueOf(comments.get(0).getMovieId()));
+        map.put("3", String.valueOf(comments.get(0).getScore()));
+        CSVUtils.createCSVFile(exportData, map, "D://csv", "data").getPath();
+
+        List<Movie> movies = new ArrayList<>();
+        try {
+            List<Integer> main = Main.main(userId);
+            for (Integer integer : main) {
+                Movie movie = movieService.selectById(integer);
+                movies.add(movie);
+            }
+        } catch (Exception e) {
+        }
+        return movies;
     }
 }
