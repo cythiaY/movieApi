@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BehaviorMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.domain.Behavior">
+        <id column="id" property="id"/>
+        <result column="userId" property="userId"/>
+        <result column="romanceType" property="romanceType"/>
+        <result column="actionType" property="actionType"/>
+        <result column="thrillerType" property="thrillerType"/>
+        <result column="comedyType" property="comedyType"/>
+        <result column="scifiType" property="scifiType"/>
+        <result column="crimeType" property="crimeType"/>
+        <result column="warType" property="warType"/>
+        <result column="animationType" property="animationType"/>
+    </resultMap>
+
+</mapper>
