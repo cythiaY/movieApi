@@ -70,12 +70,12 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
 
     public List<Movie> getRecommendMovies(Integer userId) {
         List<Comment> comments = selectList(null);
-        BufferedWriter csvFileOutputStream  = null;
+        BufferedWriter csvFileOutputStream = null;
         try {
-            csvFileOutputStream =  new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("./data.csv")), "UTF-8"), 1024);
-            for (int i = 0; i < comments.size() ; i++) {
-                csvFileOutputStream.write(comments.get(i).getUserId()+","+comments.get(i).getMovieId()+","+comments.get(i).getScore());
-                if(i != comments.size()-1){
+            csvFileOutputStream = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("./data.csv")), "UTF-8"), 1024);
+            for (int i = 0; i < comments.size(); i++) {
+                csvFileOutputStream.write(comments.get(i).getUserId() + "," + comments.get(i).getMovieId() + "," + comments.get(i).getScore());
+                if (i != comments.size() - 1) {
                     csvFileOutputStream.newLine();
                 }
             }
@@ -98,4 +98,5 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
         }
         return movies;
     }
+
 }

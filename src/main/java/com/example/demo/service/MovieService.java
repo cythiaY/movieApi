@@ -10,6 +10,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,5 +53,18 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     public List<Movie> recommendMovies(Integer userId ) {
        List<Movie> movies =  commentService.getRecommendMovies(userId);
        return movies;
+    }
+
+    public List<Movie> getInitMovies() {
+        List<Movie> movies = new ArrayList<>();
+        int initIds[] = {111129, 111124, 111219, 111126, 111175, 111139, 111282, 111123};
+        try {
+            for (Integer integer : initIds) {
+                Movie movie = selectById(integer);
+                movies.add(movie);
+            }
+        } catch (Exception e) {
+        }
+        return movies;
     }
 }
