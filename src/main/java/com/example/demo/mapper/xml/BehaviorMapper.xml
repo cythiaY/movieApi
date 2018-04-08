@@ -12,6 +12,10 @@
         <result column="crimeType" property="crimeType"/>
         <result column="warType" property="warType"/>
         <result column="animationType" property="animationType"/>
+        <result column="isNew" property="isNew"/>
     </resultMap>
 
+    <select id="selectByUserId" resultMap="BaseResultMap">
+      SELECT * FROM behavior WHERE userId = #{userId}
+    </select>
 </mapper>

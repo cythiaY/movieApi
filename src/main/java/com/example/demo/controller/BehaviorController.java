@@ -18,21 +18,28 @@ public class BehaviorController {
     private BehaviorService behaviorService;
 
     /**
-     * 修改用户
+     * 修改用户行为记录
      */
     @RequestMapping("/update")
     public ResponseDO updateUser(@RequestParam(value = "userId", required = true) Integer userId,
-                                 @RequestParam(value = "romanceTypeNum", required = false) Integer romanceTypeNum,
-                                 @RequestParam(value = "actionTypeNum", required = false) Integer actionTypeNum,
-                                 @RequestParam(value = "thrillerTypeNum", required = false) Integer thrillerTypeNum,
-                                 @RequestParam(value = "comedyTypeNum", required = false) Integer comedyTypeNum,
-                                 @RequestParam(value = "scifiTypeNum", required = false) Integer scifiTypeNum,
-                                 @RequestParam(value = "crimeTypeNum", required = false) Integer crimeTypeNum,
-                                 @RequestParam(value = "warTypeNum", required = false) Integer warTypeNum,
-                                 @RequestParam(value = "animationTypeNum", required = false) Integer animationTypeNum
+                                 @RequestParam(value = "romanceTypeNum", required = false, defaultValue = "false") Boolean romanceTypeNum,
+                                 @RequestParam(value = "actionTypeNum", required = false, defaultValue = "false") Boolean actionTypeNum,
+                                 @RequestParam(value = "thrillerTypeNum", required = false, defaultValue = "false") Boolean thrillerTypeNum,
+                                 @RequestParam(value = "comedyTypeNum", required = false, defaultValue = "false") Boolean comedyTypeNum,
+                                 @RequestParam(value = "scifiTypeNum", required = false, defaultValue = "false") Boolean scifiTypeNum,
+                                 @RequestParam(value = "crimeTypeNum", required = false, defaultValue = "false") Boolean crimeTypeNum,
+                                 @RequestParam(value = "warTypeNum", required = false, defaultValue = "false") Boolean warTypeNum,
+                                 @RequestParam(value = "animationTypeNum", required = false, defaultValue = "false") Boolean animationTypeNum
     ) {
-
-        boolean result = behaviorService.updateBehaviorById(userId, actionTypeNum);
+        boolean result = behaviorService.updateBehaviorById(userId, romanceTypeNum, actionTypeNum, thrillerTypeNum, comedyTypeNum, scifiTypeNum, crimeTypeNum, warTypeNum, animationTypeNum);
         return new ResponseDO(result);
+    }
+
+    /**
+     * 获取用户行为记录
+     */
+    @RequestMapping("/getBehavior")
+    public ResponseDO getBehavior(@RequestParam(value = "userId") Integer userId) {
+        return new ResponseDO(behaviorService.getBehaviorById(userId));
     }
 }

@@ -10,5 +10,5 @@ import java.util.List;
  * Created by Summer on 2018/3/22.
  */
 public interface BehaviorMapper extends BaseMapper<Behavior> {
-
+    Behavior selectByUserId(@Param("userId") Integer userId);
 }

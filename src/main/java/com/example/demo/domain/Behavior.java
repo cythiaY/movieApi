@@ -42,6 +42,9 @@ public class Behavior {
     @TableField("animationType")
     private Integer animationType;
 
+    @TableField("isNew")
+    private Integer isNew;
+
     public Integer getId() {
         return id;
     }
@@ -122,4 +125,11 @@ public class Behavior {
         this.animationType = animationType;
     }
 
+    public Integer getIsNew() {
+        return isNew;
+    }
+
+    public void setIsNew(Integer isNew) {
+        this.isNew = isNew;
+    }
 }
