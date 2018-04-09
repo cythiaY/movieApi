@@ -86,6 +86,7 @@ public class BehaviorService extends ServiceImpl<BehaviorMapper, Behavior> {
         if (behaviorMapper.selectByUserId(userId) == null) {
             Behavior behavior = new Behavior();
             behavior.setUserId(userId);
+            behavior.setIsNew(1);
             insert(behavior);
             return behavior;
         } else {
