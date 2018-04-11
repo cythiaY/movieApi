@@ -68,8 +68,16 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
         return updateById(comment);
     }
 
+    /**
+     * 根据用户id获取推荐电影列表
+     *
+     * @param userId
+     * @return
+     */
     public List<Movie> getRecommendMovies(Integer userId) {
         List<Comment> comments = selectList(null);
+
+        // 根据comment的userId、movieId、score字段生成csv文件
         BufferedWriter csvFileOutputStream = null;
         try {
             csvFileOutputStream = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("./data.csv")), "UTF-8"), 1024);
@@ -89,7 +97,10 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
 
         List<Movie> movies = new ArrayList<>();
         try {
+            // 调用封装的推荐算法
             List<Integer> main = Main.main(userId);
+
+            // 根据结果集从movie表中拿取相应的movie对象集合
             for (Integer integer : main) {
                 Movie movie = movieService.selectById(integer);
                 movies.add(movie);
@@ -98,5 +109,4 @@ public class CommentService extends ServiceImpl<CommentMapper, Comment> {
         }
         return movies;
     }
-
 }

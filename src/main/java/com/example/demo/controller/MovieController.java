@@ -62,7 +62,7 @@ public class MovieController {
      * 获取推荐电影
      */
     @RequestMapping(value = "/recommend/Movies", method = RequestMethod.GET)
-    public ResponseDO getMovies(@RequestParam(value = "user_id", required = false) Integer userId) {
+    public ResponseDO getMovies(@RequestParam(value = "user_id", required = true) Integer userId) {
         return new ResponseDO(movieService.recommendMovies(userId));
 
     }

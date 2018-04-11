@@ -39,9 +39,4 @@ public class CommentController {
     public ResponseDO deleteComment(@RequestParam(value = "comment_id") Integer commentId) {
         return new ResponseDO(commentService.deleteComment(commentId));
     }
-
-    @RequestMapping("/updateComment")
-    public ResponseDO updateComment(@RequestBody Comment comment) {
-        return new ResponseDO(commentService.updateComment(comment));
-    }
 }
