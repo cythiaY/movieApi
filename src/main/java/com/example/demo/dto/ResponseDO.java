@@ -1,4 +1,4 @@
-package com.example.demo.utils;
+package com.example.demo.dto;
 
 /**
  * Created by Summer on 2017/12/11.

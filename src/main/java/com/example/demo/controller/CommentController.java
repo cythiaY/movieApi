@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.Comment;
 import com.example.demo.service.CommentService;
-import com.example.demo.utils.ResponseDO;
+import com.example.demo.dto.ResponseDO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

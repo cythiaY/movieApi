@@ -2,11 +2,9 @@ package com.example.demo.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.example.demo.domain.Comment;
 import com.example.demo.domain.Movie;
 import com.example.demo.dto.PageDTO;
 import com.example.demo.mapper.MovieMapper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

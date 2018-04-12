@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.Movie;
 import com.example.demo.service.MovieService;
-import com.example.demo.utils.ResponseDO;
+import com.example.demo.dto.ResponseDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,11 +2,9 @@ package com.example.demo.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.example.demo.domain.Movie;
 import com.example.demo.domain.User;
 import com.example.demo.dto.PageDTO;
 import com.example.demo.mapper.UserMapper;
-import com.example.demo.utils.PasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,7 +82,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     }
 
     public Integer login(String name, String password) {
-        User user = userMapper.login(name, PasswordUtils.getStudentPassword(password));
+        User user = userMapper.login(name, password);
         if (user != null) {
             return user.getId();
         } else {
